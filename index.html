@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Her Special Day - Selamat Ulang Tahun Sayang</title>
+    <meta name="description" content="Sebuah website spesial yang dibuat dengan penuh kasih sayang untuk merayakan hari ulang tahunmu.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Falling Hearts/Sparkles -->
+    <canvas id="canvas-particles"></canvas>
+    
+    <!-- Main App Container -->
+    <main id="app-container">
+        
+        <!-- BAGIAN 1: COUNTDOWN TIMER -->
+        <section id="section-countdown" class="section active">
+            <div class="content-wrapper text-center">
+                <p class="subtitle-gold">✦ MENGHITUNG HARI ✦</p>
+                <h1 class="main-title">Her Special Day is Coming</h1>
+                <p class="sub-message">Sesuatu sedang menunggumu 💖</p>
+                
+                <!-- Live WITA Clock -->
+                <div class="wita-clock-wrapper">
+                    <span class="wita-clock-label">🕐 Waktu WITA Sekarang</span>
+                    <div id="wita-live-clock" class="wita-live-clock">--:--:--</div>
+                    <span class="wita-clock-date" id="wita-live-date">Jumat, 11 Juli 2026</span>
+                </div>
+                
+                <div class="countdown-grid">
+                    <div class="countdown-box">
+                        <span id="timer-days" class="timer-num">00</span>
+                        <span class="timer-label">HARI</span>
+                    </div>
+                    <div class="countdown-colon">:</div>
+                    <div class="countdown-box">
+                        <span id="timer-hours" class="timer-num">00</span>
+                        <span class="timer-label">JAM</span>
+                    </div>
+                    <div class="countdown-colon">:</div>
+                    <div class="countdown-box">
+                        <span id="timer-minutes" class="timer-num">00</span>
+                        <span class="timer-label">MENIT</span>
+                    </div>
+                    <div class="countdown-colon">:</div>
+                    <div class="countdown-box">
+                        <span id="timer-seconds" class="timer-num">--</span>
+                        <span class="timer-label">DETIK</span>
+                    </div>
+                </div>
+                
+                <p id="timer-status" class="timer-status">⏳ Menghitung waktu menuju hari spesialnya (WITA)... 💖</p>
+                
+                <!-- Countdown Button -->
+                <button id="btn-countdown" class="btn-primary locked" disabled>
+                    <span id="btn-icon">🔒</span> <span id="btn-text">TUNGGU SAMPAI WAKTUNYA</span> 🔒
+                </button>
+                <p id="test-mode-indicator" class="test-indicator">Tersisa 00:05 lagi (Test Mode Aktif)</p>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 2: ADA SESUATU UNTUKMU (KADO TERKUNCI) -->
+        <section id="section-gift" class="section">
+            <div class="content-wrapper text-center">
+                <p class="subtitle-gold">✦ ADA SESUATU UNTUKMU ✦</p>
+                
+                <!-- Gift Box Container -->
+                <div class="gift-box-container" id="gift-box-interactive">
+                    <div class="gift-box">
+                        <div class="gift-lid">
+                            <div class="gift-ribbon-v"></div>
+                            <div class="gift-bow"></div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-h"></div>
+                            <div class="gift-ribbon-v"></div>
+                        </div>
+                    </div>
+                    <!-- Sparkle effects -->
+                    <div class="gift-sparkles"></div>
+                </div>
+                
+                <p class="click-instruction">✨ klik untuk membuka hadiahmu ✨</p>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 3: WELCOME PAGE (YOUR SPECIAL DAY) -->
+        <section id="section-welcome" class="section">
+            <!-- Floating Polaroids Container -->
+            <div class="polaroid-decor left-decor">
+                <div class="polaroid-card tilt-left-1"><img src="assets/photo1.jpg" alt="Memori 1"></div>
+                <div class="polaroid-card tilt-right-1"><img src="assets/photo2.jpg" alt="Memori 2"></div>
+                <div class="polaroid-card tilt-left-2"><img src="assets/photo3.jpg" alt="Memori 3"></div>
+            </div>
+            
+            <div class="content-wrapper text-center z-index-10">
+                <p class="subtitle-gold">✦ A LOVE LETTER FOR YOU ✦</p>
+                <h1 class="huge-title">Your Special Day</h1>
+                <p class="sub-message font-serif">Created with love, just for you</p>
+                
+                <button id="btn-read-letter" class="btn-primary-glow">
+                    ✦ READ MY LETTER ✦
+                </button>
+            </div>
+            
+            <div class="polaroid-decor right-decor">
+                <div class="polaroid-card tilt-right-2"><img src="assets/photo4.jpg" alt="Memori 4"></div>
+                <div class="polaroid-card tilt-left-1"><img src="assets/photo5.jpg" alt="Memori 5"></div>
+                <div class="polaroid-card tilt-right-1"><img src="assets/photo6.jpg" alt="Memori 6"></div>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 4: SURAT CINTA PERTAMA -->
+        <section id="section-letter" class="section">
+            <div class="content-wrapper text-center">
+                <h2 class="serif-title mb-4">Happy Birthday</h2>
+                
+                <!-- Glassmorphic Card -->
+                <div class="glass-card text-left">
+                    <div class="card-quote">“</div>
+                    <h3 class="card-header-love">HAPPY BIRTHDAY SAYANGKUUU 💖</h3>
+                    <div class="card-body-text" id="typewriter-letter-1">
+                        <!-- Typewriter text goes here -->
+                    </div>
+                </div>
+                
+                <!-- Hidden button, revealed after typing ends -->
+                <div class="button-reveal-container" id="reveal-container-1">
+                    <button id="btn-to-memories" class="btn-secondary">
+                        OUR MEMORIES ➔
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 5: OUR MEMORIES (GALERI POLAROID) -->
+        <section id="section-memories" class="section">
+            <div class="content-wrapper text-center max-w-lg">
+                <h2 class="serif-title">Our Memories</h2>
+                <p class="subtitle-gold mb-5">✦ every moment captured in love ✦</p>
+                
+                <!-- Polaroid Gallery Grid -->
+                <div class="polaroid-gallery-grid">
+                    <div class="polaroid-item item-1">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo1.jpg" alt="Memory 1">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-2">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo2.jpg" alt="Memory 2">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-3">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo3.jpg" alt="Memory 3">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-4">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo4.jpg" alt="Memory 4">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-5">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo5.jpg" alt="Memory 5">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-6">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo6.jpg" alt="Memory 6">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-7">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo7.jpg" alt="Memory 7">
+                        </div>
+                    </div>
+                    <div class="polaroid-item item-8">
+                        <div class="polaroid-frame">
+                            <img src="assets/photo8.jpg" alt="Memory 8">
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="btn-to-video" class="btn-secondary mt-5">
+                    WATCH VIDEO ➔
+                </button>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 6: A MOMENT FOR YOU (PEMUTAR VIDEO) -->
+        <section id="section-video" class="section">
+            <div class="content-wrapper text-center">
+                <h2 class="serif-title">A Moment For You</h2>
+                <p class="subtitle-gold mb-4">✦ a special video message ✦</p>
+                
+                <!-- Sleek Custom Video Player -->
+                <div class="custom-video-container">
+                    <video id="romantic-video" src="assets/video.mp4" playsinline></video>
+                    
+                    <!-- Custom Controls Overlay -->
+                    <div class="video-controls-overlay">
+                        <button id="video-play-btn" class="video-control-btn big-play">
+                            <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="video-controls-bar">
+                            <button id="video-mini-play" class="video-control-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" id="video-play-icon">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                            
+                            <div class="video-timeline-container">
+                                <div class="video-progress" id="video-progress-bar"></div>
+                            </div>
+                            
+                            <span class="video-time-display" id="video-time">0:00 / 0:00</span>
+                            
+                            <button id="video-mute-btn" class="video-control-btn">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" id="video-volume-icon">
+                                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="btn-to-wishes" class="btn-secondary mt-5">
+                    BIRTHDAY WISHES ➔
+                </button>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 7: BIRTHDAY WISHES (SURAT CINTA KEDUA) -->
+        <section id="section-wishes" class="section">
+            <div class="content-wrapper text-center">
+                <h2 class="serif-title mb-4">Birthday Wishes</h2>
+                
+                <!-- Glassmorphic Card -->
+                <div class="glass-card text-left">
+                    <div class="card-quote">“</div>
+                    <h3 class="card-header-love">Happy Birthday, my love 💖</h3>
+                    <div class="card-body-text" id="typewriter-letter-2">
+                        <!-- Typewriter text goes here -->
+                    </div>
+                    
+                    <!-- Decorative Heart Icon -->
+                    <div class="heart-indicator-container text-center mt-4">
+                        <span class="heart-pulse-glow">💖</span>
+                    </div>
+                </div>
+                
+                <div class="button-reveal-container" id="reveal-container-2">
+                    <button id="btn-to-ending" class="btn-secondary">
+                        ONE MORE THING ➔
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 8: PENUTUP (FOREVER YOURS + BACKSPACE EFFECT) -->
+        <section id="section-ending" class="section">
+            <div class="content-wrapper text-center">
+                <h2 class="serif-title animated-heading" id="ending-title">Happy Birthday</h2>
+                
+                <div class="ending-message-container">
+                    <p id="ending-text-p1" class="ending-p italic-text"></p>
+                    <p id="ending-text-p2" class="ending-p italic-text"></p>
+                    <p id="ending-text-p3" class="ending-p italic-text font-weight-bold gold-text"></p>
+                </div>
+                
+                <div class="button-reveal-container mt-5" id="reveal-container-ending">
+                    <button id="btn-replay" class="btn-primary-glow compact">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: middle; margin-right: 6px;">
+                            <path d="M12 5V2L8 6l4 4V7c3.31 0 6 2.69 6 6 0 2.97-2.17 5.43-5 5.91v2.02c3.95-.49 7-3.85 7-7.93 0-4.42-3.58-8-8-8zm-6 8c0-2.97 2.17-5.43 5-5.91V5.07c-3.95.49-7 3.85-7 7.93 0 4.42 3.58 8 8 8v-3c-3.31 0-6-2.69-6-6z"/>
+                        </svg>
+                        REPLAY FROM START
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Background Audio Element -->
+    <audio id="bg-music" src="assets/music.mp3" loop></audio>
+    
+    <!-- FLOATING CUSTOM MUSIC PLAYER -->
+    <div id="music-player-widget" class="music-widget">
+        <div class="music-disc-wrapper" id="music-disc-btn">
+            <div class="music-disc" id="music-disc-element">
+                <span class="music-note">🎵</span>
+            </div>
+            <!-- Equalizer waves -->
+            <div class="equalizer" id="music-equalizer">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+            </div>
+        </div>
+        <div class="music-info" id="music-info-panel">
+            <span class="music-status">Sekarang Memutar:</span>
+            <span class="music-title">Sparks - Coldplay</span>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
